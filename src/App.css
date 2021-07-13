@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
+
+* {
+  font-family: 'Hind';
+  color: #fff;
+}
+
+.clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.ribbon-1 {
+  width: 0;
+  border-right: 1rem solid #FFCD02;
+  border-left: 1rem solid #FFCD02;
+  border-bottom: 10px solid transparent;
+}
+
+.ribbon-2 {
+  width: 0;
+  border-right: 1rem solid #A6A9AB;
+  border-left: 1rem solid #A6A9AB;
+  border-bottom: 10px solid transparent;
+}
+
+.ribbon-3 {
+  width: 0;
+  border-right: 1rem solid #A3684D;
+  border-left: 1rem solid #A3684D;
+  border-bottom: 10px solid transparent;
+}
