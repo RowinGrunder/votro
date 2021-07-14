@@ -8,28 +8,27 @@ const MusicCard = ({ item }) => {
 
   const { songs } = useContext(SongContext);
 
-  const rank = songs.slice(0, 3);
   const [ribbon, setRibbon] = useState({});
   
   useEffect(() => {
-    switch (item.id) {
-      case rank[0].id:
+    switch (item.rank) {
+      case 1:
         setRibbon({ class: 'ribbon-1', number: '1' });
         break;
-      case rank[1].id:
+      case 2:
         setRibbon({ class: 'ribbon-2', number: '2' });
         break;
-      case rank[2].id:
+      case 3:
         setRibbon({ class: 'ribbon-3', number: '3' });
         break;
       default:
-      setRibbon({})
+        setRibbon({})
         break;
     }
     return () => {
       //
     }
-  }, [songs, ribbon, setRibbon, rank, item])
+  }, [songs, ribbon, setRibbon, item])
 
   return (
     <section className="flex bg-white relative">

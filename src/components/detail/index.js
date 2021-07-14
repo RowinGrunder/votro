@@ -3,6 +3,7 @@ import BulletGap from "./BulletGap";
 import LabelPair from "./LabelPair";
 import { SongContext } from "../../contexts/SongContext";
 import { useContext } from "react";
+import moment from 'moment';
 
 const MusicDetail = ({ item }) => {
   const { increaseVote } = useContext(SongContext);
@@ -28,7 +29,7 @@ const MusicDetail = ({ item }) => {
       <ArtistLabel artist={item.artist} image={item.image} />
       <div className="flex-col space-y-1 pt-5">
         <LabelPair title="songwriter" value={item.writers} />
-        <LabelPair title="released" value={item.released} />
+        <LabelPair title="released" value={moment(item.released).format('LL')} />
       </div>
       <span className="text-black clamp-2 flex relative text-justify">
         { item.lyrics }

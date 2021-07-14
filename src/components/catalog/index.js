@@ -1,13 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import TitleBar from "../TitleBar";
 import MusicCard from "./MusicCard";
 import SortBar from "./SortBar";
 import { SongContext } from "../../contexts/SongContext";
 
 const MusicCatalog = () => {
+  const { songs, active } = useContext(SongContext);
   const sortItems = ['popular', 'latest'];
-  const [active, setActive] = useState('popular');
-  const { songs } = useContext(SongContext);
   
   return (
     <div className="flex justify-center">
@@ -18,7 +17,6 @@ const MusicCatalog = () => {
             <SortBar
               items={sortItems}
               active={active}
-              setActive={setActive}
             />
           }
         />

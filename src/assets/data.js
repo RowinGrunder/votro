@@ -29,7 +29,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/2dRvMEW4EwySxRUtEamSfG?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/89805365?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -47,7 +48,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/5CZ40GBx1sQ9agT82CLQCT?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/1378352182?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -65,7 +67,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/0BnF8gcEILVfPbe46GQlSB?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/123874668?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -83,7 +86,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/5ikMYV9hscSVE9ncSFidRL?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/827958002?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -101,7 +105,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/6J2LdBN97cDWn0MLxYh9HB?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/796891282?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -119,7 +124,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/7D0VClhoNONSsdPYWwcTej?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/1090381962?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -137,7 +143,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/38MKH1U8zGuzNXbm5tCBrn?autoplay=true',
       deezer: ''
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -155,7 +162,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/4lszNcJSaz61QT6gpMhFU1?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/421484872?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -173,7 +181,8 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/6i0V12jOa3mr6uu4WYhUBr?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/126884459?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   },
   {
     id: uuid(),
@@ -191,6 +200,7 @@ export const songs = [
       spotify: 'https://open.spotify.com/track/6eJBihAzTWRxvvjJWuRQXM?autoplay=true',
       deezer: 'https://www.deezer.com/en/track/124286696?autoplay=true'
     },
-    votes: generateVotes()
+    votes: generateVotes(),
+    rank: 0
   }
 ]
