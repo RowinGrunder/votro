@@ -1,9 +1,35 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MusicDetail from "../detail";
 import albums from "../../assets/albums";
+import { SongContext } from "../../contexts/SongContext";
 
 const MusicCard = ({ item }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const { songs } = useContext(SongContext);
+
+  const rank = songs.slice(0, 3);
+  const [ribbon, setRibbon] = useState({});
+  
+  useEffect(() => {
+    switch (item.id) {
+      case rank[0].id:
+        setRibbon({ class: 'ribbon-1', number: '1' });
+        break;
+      case rank[1].id:
+        setRibbon({ class: 'ribbon-2', number: '2' });
+        break;
+      case rank[2].id:
+        setRibbon({ class: 'ribbon-3', number: '3' });
+        break;
+      default:
+      setRibbon({})
+        break;
+    }
+    return () => {
+      //
+    }
+  }, [songs, ribbon, setRibbon, rank, item])
 
   return (
     <section className="flex bg-white relative">
@@ -17,9 +43,13 @@ const MusicCard = ({ item }) => {
         </div>
 
         <div className="z-10 -m-0.5">
-          <button className="ribbon-3 flex flex-col items-center justify-center cursor-default pt-2 pb-1">
-            <span className="text-white font-bold text-xl">1</span>
-          </button>
+          {ribbon &&
+            <button
+              className={`${ribbon.class} flex flex-col items-center justify-center cursor-default pt-2 pb-1`}
+            >
+              <span className="text-white font-bold text-xl">{ ribbon.number }</span>
+            </button>
+          }
         </div>
         <button
           onClick={() => setIsPlaying(prev => !prev)}

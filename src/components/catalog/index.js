@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TitleBar from "../TitleBar";
 import MusicCard from "./MusicCard";
 import SortBar from "./SortBar";
+import { SongContext } from "../../contexts/SongContext";
 
-const MusicCatalog = ({ songs, setSongs }) => {
+const MusicCatalog = () => {
   const sortItems = ['popular', 'latest'];
   const [active, setActive] = useState('popular');
-
+  const { songs } = useContext(SongContext);
+  
   return (
     <div className="flex justify-center">
       <div className="w-1/2 py-5">

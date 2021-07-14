@@ -1,27 +1,25 @@
 import './App.css';
 import MusicBoard from './pages/MusicBoard';
+import { useContext, useEffect } from 'react';
+import { SongContext } from "./contexts/SongContext"
 import { songs as data } from './assets/data';
-import { useEffect, useState } from 'react';
 
 function App() {
-  const [songs, setSongs] = useState([]);
-
+  const { songs, setSongs } = useContext(SongContext);
+  
   useEffect(() => {
-    setSongs(data);
-    console.log(songs);
+    const sortedData = data.sort((a, b) => b.votes - a.votes);
+    setSongs(sortedData);
 
     return () => {
       //
     }
-  }, [songs])
+  }, [songs, setSongs])
 
   return (
     <div className="App">
       <main className="bg-gray-900 min-h-screen">
-        <MusicBoard
-          songs={songs}
-          setSongs={setSongs}
-        />
+        <MusicBoard />
       </main>
     </div>
   );

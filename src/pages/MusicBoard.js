@@ -1,14 +1,11 @@
 import PageHeader from "../components/header";
 import MusicCatalog from "../components/catalog";
 
-const MusicBoard = ({ songs, setSongs }) => {
+const MusicBoard = () => {
   return (
     <div>
       <PageHeader />
-      <MusicCatalog
-        songs={songs}
-        setSongs={setSongs}
-      />
+      <MusicCatalog />
     </div>
   );
 }
