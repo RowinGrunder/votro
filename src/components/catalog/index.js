@@ -5,8 +5,7 @@ import SortBar from "./SortBar";
 import { SongContext } from "../../contexts/SongContext";
 
 const MusicCatalog = () => {
-  const { songs, active } = useContext(SongContext);
-  const sortItems = ['popular', 'latest'];
+  const { songs } = useContext(SongContext);
   
   return (
     <div className="flex justify-center">
@@ -14,10 +13,7 @@ const MusicCatalog = () => {
         <TitleBar
           title="music board"
           custom={
-            <SortBar
-              items={sortItems}
-              active={active}
-            />
+            <SortBar />
           }
         />
         <div className="py-5 space-y-3">

@@ -1,34 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import MusicDetail from "../detail";
 import albums from "../../assets/albums";
-import { SongContext } from "../../contexts/SongContext";
 
 const MusicCard = ({ item }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const { songs } = useContext(SongContext);
-
-  const [ribbon, setRibbon] = useState({});
-  
-  useEffect(() => {
-    switch (item.rank) {
-      case 1:
-        setRibbon({ class: 'ribbon-1', number: '1' });
-        break;
-      case 2:
-        setRibbon({ class: 'ribbon-2', number: '2' });
-        break;
-      case 3:
-        setRibbon({ class: 'ribbon-3', number: '3' });
-        break;
-      default:
-        setRibbon({})
-        break;
-    }
-    return () => {
-      //
-    }
-  }, [songs, ribbon, setRibbon, item])
 
   return (
     <section className="flex bg-white relative">
@@ -42,11 +17,14 @@ const MusicCard = ({ item }) => {
         </div>
 
         <div className="z-10 -m-0.5">
-          {ribbon &&
+          {item.rank > 0 &&
             <button
-              className={`${ribbon.class} flex flex-col items-center justify-center cursor-default pt-2 pb-1`}
+              className={`
+                ${item.rank?`ribbon-${item.rank}`:``}
+                flex flex-col items-center justify-center cursor-default pt-2 pb-1
+              `}
             >
-              <span className="text-white font-bold text-xl">{ ribbon.number }</span>
+              <span className="text-white font-bold text-xl">{ item.rank }</span>
             </button>
           }
         </div>

@@ -14,12 +14,34 @@ function SongContextProvider(props) {
       return song;
     })
 
-    setSongs(updatedSongs);
+    const sortedData = updatedSongs.sort((a, b) => b.votes - a.votes);
+    sortedData.map((song, index) => {
+      song.rank = 0;
+      switch (index) {
+        case 0:
+          song.rank = 1;
+          break;
+        case 1:
+          song.rank = 2;
+          break;
+        case 2:
+          song.rank = 3;
+          break;
+        default:
+          song.rank = 0;
+          break;
+      }
+
+      return song;
+    })
+
+    setSongs(sortedData);
   }
 
   const sortByPopular = () => {
     const sortedData = songs.sort((a, b) => b.votes - a.votes);
     sortedData.map((song, index) => {
+      song.rank = 0;
       switch (index) {
         case 0:
           song.rank = 1;
