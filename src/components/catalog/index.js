@@ -5,7 +5,7 @@ import SortBar from "./SortBar";
 import { SongContext } from "../../contexts/SongContext";
 
 const MusicCatalog = () => {
-  const { songs } = useContext(SongContext);
+  const { songs, filteredSongs, search } = useContext(SongContext);
   
   return (
     <div className="flex justify-center">
@@ -17,12 +17,20 @@ const MusicCatalog = () => {
           }
         />
         <div className="py-5 space-y-3">
-          {songs.map(song =>
-            <MusicCard
-              key={song.id}
-              item={song}
-            />
-          )}
+          {search
+            ? filteredSongs.map(song =>
+                <MusicCard
+                  key={song.id}
+                  item={song}
+                />
+              )
+            : songs.map(song =>
+              <MusicCard
+                key={song.id}
+                item={song}
+              />
+            )
+          }
         </div>
       </div>
     </div>

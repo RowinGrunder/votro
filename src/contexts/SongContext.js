@@ -5,6 +5,8 @@ export const SongContext = createContext();
 function SongContextProvider(props) {
   const [songs, setSongs] = useState([]);
   const [active, setActive] = useState('popular');
+  const [search, setSearch] = useState('');
+  const [filteredSongs, setFilteredSongs] = useState([]);
 
   const increaseVote = id => {
     let updatedSongs = songs.map(song => {
@@ -67,7 +69,25 @@ function SongContextProvider(props) {
     setSongs(sortedData);
   }
 
-  const value = { songs, setSongs, increaseVote, active, setActive, sortByPopular, sortByLatest };
+  const searchFor = () => {
+    let filteredData = songs.filter(song => {
+      const filter = search.toLowerCase();
+      const writers = song.writers.join(' ').toLowerCase();
+      return (
+        song.title.toLowerCase().includes(filter) ||
+        song.artist.toLowerCase().includes(filter) ||
+        song.album.toLowerCase().includes(filter) ||
+        song.lyrics.toLowerCase().includes(filter) ||
+        writers.includes(filter)
+      )
+    })
+    setFilteredSongs(filteredData);
+  }
+
+  const songValue = { songs, setSongs, increaseVote };
+  const sortValue = { active, setActive, sortByPopular, sortByLatest };
+  const searchValue = { search, setSearch, searchFor, filteredSongs };
+  const value = { ...songValue, ...sortValue, ...searchValue };
 
   return(
     <SongContext.Provider value={value}>
