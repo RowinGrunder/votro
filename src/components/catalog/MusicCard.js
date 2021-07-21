@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MusicDetail from "../detail";
 import albums from "../../assets/albums";
+import RankRibbon from "../RankRibobn";
 
 const MusicCard = ({ item }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,14 +19,7 @@ const MusicCard = ({ item }) => {
 
         <div className="z-10 -m-0.5">
           {item.rank > 0 &&
-            <button
-              className={`
-                ${item.rank?`ribbon-${item.rank}`:``}
-                flex flex-col items-center justify-center cursor-default pt-2 pb-1
-              `}
-            >
-              <span className="text-white font-bold text-xl">{ item.rank }</span>
-            </button>
+            <RankRibbon rank={item.rank} />
           }
         </div>
         <button

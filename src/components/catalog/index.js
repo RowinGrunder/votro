@@ -5,33 +5,35 @@ import SortBar from "./SortBar";
 import { SongContext } from "../../contexts/SongContext";
 
 const MusicCatalog = () => {
-  const { songs, filteredSongs, search } = useContext(SongContext);
+  const { songs, filteredSongs, search, searchClick } = useContext(SongContext);
   
   return (
-    <div className="flex justify-center">
-      <div className="w-1/2 py-5">
-        <TitleBar
-          title="music board"
-          custom={
-            <SortBar />
-          }
-        />
-        <div className="py-5 space-y-3">
-          {search
+    <div>
+      <TitleBar
+        title="music board"
+        custom={
+          <SortBar />
+        }
+      />
+      <div className="py-5 space-y-3">
+        {search
+          ? filteredSongs.length
             ? filteredSongs.map(song =>
-                <MusicCard
-                  key={song.id}
-                  item={song}
-                />
-              )
-            : songs.map(song =>
               <MusicCard
                 key={song.id}
                 item={song}
               />
             )
-          }
-        </div>
+            : searchClick
+              ? <span className="lowercase"><span className="underline">{ search }</span> not found</span>
+              : <span className="lowercase">Click "Enter" to search for <span className="underline">{ search }</span></span>
+          : songs.map(song =>
+            <MusicCard
+              key={song.id}
+              item={song}
+            />
+          )
+        }
       </div>
     </div>
   );

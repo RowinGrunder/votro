@@ -4,8 +4,10 @@ export const SongContext = createContext();
 
 function SongContextProvider(props) {
   const [songs, setSongs] = useState([]);
+  const [song, setSong] = useState({});
   const [active, setActive] = useState('popular');
   const [search, setSearch] = useState('');
+  const [searchClick, setSearchClick] = useState(false);
   const [filteredSongs, setFilteredSongs] = useState([]);
 
   const increaseVote = id => {
@@ -41,30 +43,13 @@ function SongContextProvider(props) {
   }
 
   const sortByPopular = () => {
+    setSearch('');
     const sortedData = songs.sort((a, b) => b.votes - a.votes);
-    sortedData.map((song, index) => {
-      song.rank = 0;
-      switch (index) {
-        case 0:
-          song.rank = 1;
-          break;
-        case 1:
-          song.rank = 2;
-          break;
-        case 2:
-          song.rank = 3;
-          break;
-        default:
-          song.rank = 0;
-          break;
-      }
-
-      return song;
-    })
     setSongs(sortedData);
   }
 
   const sortByLatest = () => {
+    setSearch('');
     const sortedData = songs.sort((a, b) => new Date(b.released) - new Date(a.released));
     setSongs(sortedData);
   }
@@ -84,10 +69,11 @@ function SongContextProvider(props) {
     setFilteredSongs(filteredData);
   }
 
-  const songValue = { songs, setSongs, increaseVote };
+  const songValue = { songs, setSongs, song, setSong, increaseVote };
   const sortValue = { active, setActive, sortByPopular, sortByLatest };
-  const searchValue = { search, setSearch, searchFor, filteredSongs };
-  const value = { ...songValue, ...sortValue, ...searchValue };
+  const searchValue = { search, setSearch, searchFor };
+  const searchResult = { filteredSongs, setFilteredSongs, searchClick, setSearchClick };
+  const value = { ...songValue, ...sortValue, ...searchValue, ...searchResult };
 
   return(
     <SongContext.Provider value={value}>

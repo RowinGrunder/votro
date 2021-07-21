@@ -1,8 +1,13 @@
 import './App.css';
-import MusicBoard from './pages/MusicBoard';
 import { useContext, useEffect } from 'react';
 import { SongContext } from "./contexts/SongContext"
 import { songs as data } from './assets/data';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MusicCatalog from './components/catalog'
+import MusicInfo from './components/info';
+import PageHeader from './components/header';
+import NotFound from './components/NotFound';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const { setSongs } = useContext(SongContext);
@@ -34,11 +39,30 @@ function App() {
   }, [])
   
   return (
-    <div className="App">
-      <main className="bg-gray-900 min-h-screen">
-        <MusicBoard />
-      </main>
-    </div>
+    <Router>
+      <ScrollToTop>
+        <div className="App">
+          <main className="bg-gray-900 min-h-screen">
+            <PageHeader />
+            <div className="flex justify-center">
+              <div className="w-1/2 py-5">
+                <Switch>
+                  <Route exact path="/">
+                    <MusicCatalog />
+                  </Route>
+                  <Route exact path="/song/:id">
+                    <MusicInfo />
+                  </Route>
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
+              </div>
+            </div>
+          </main>
+        </div>
+      </ScrollToTop>
+    </Router>
   );
 }
 
