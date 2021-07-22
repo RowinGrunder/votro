@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { SongContext } from "../../contexts/SongContext";
 import albums from "../../assets/albums";
 import MusicDetail from "../detail";
 import RankRibbon from "../RankRibobn";
+import NotFound from "../NotFound";
 
 const MusicInfo = () => {
   const { songs, song, setSong } = useContext(SongContext);
@@ -15,7 +16,7 @@ const MusicInfo = () => {
 
   return (
     <section className={`flex ${song ? 'bg-white' : ''}`}>
-      {song &&
+      {song ?
         <div className="min-w-full justify-center relative flex">
           <div className="z-10 right-5 absolute -top-0.5">
             {song.rank > 0 &&
@@ -50,6 +51,7 @@ const MusicInfo = () => {
             </div>
           </div>
         </div>
+        : <NotFound />
       }
     </section>
   );

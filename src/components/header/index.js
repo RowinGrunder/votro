@@ -9,10 +9,8 @@ const PageHeader = () => {
   const { songs, song } = useContext(SongContext);
 
   history.listen((location) => {
-    if (location.pathname !== "/")
-      setIsHome(false);
-    else
-      setIsHome(true);
+    const home = location.pathname === "/" || location.pathname === "/error";
+    setIsHome(home);
   })
 
   const nextSong = () => {

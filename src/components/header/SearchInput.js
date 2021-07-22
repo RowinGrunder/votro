@@ -35,6 +35,7 @@ const SearchInput = () => {
             type="text"
             className="h-14 bg-gray-800 text-white w-full px-5 outline-none focus:bg-gray-700 "
             placeholder="search for song title, artist, album, writer or lyrics"
+            maxLength="50"
           />
           {search &&
             <div className="h-full absolute right-5 flex align-center">

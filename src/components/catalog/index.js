@@ -26,7 +26,7 @@ const MusicCatalog = () => {
             )
             : searchClick
               ? <span className="lowercase"><span className="underline">{ search }</span> not found</span>
-              : <span className="lowercase">Click "Enter" to search for <span className="underline">{ search }</span></span>
+              : <span className="lowercase">press "enter" to search for <span className="underline">{ search }</span></span>
           : songs.map(song =>
             <MusicCard
               key={song.id}

@@ -53,9 +53,7 @@ function App() {
                   <Route exact path="/song/:id">
                     <MusicInfo />
                   </Route>
-                  <Route path="*">
-                    <NotFound />
-                  </Route>
+                  <Route component={NotFound} />
                 </Switch>
               </div>
             </div>
