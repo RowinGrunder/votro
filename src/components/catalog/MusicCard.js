@@ -1,13 +1,37 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MusicDetail from "../detail";
 import albums from "../../assets/albums";
 import RankRibbon from "../RankRibobn";
+import { SongContext } from "../../contexts/SongContext";
 
 const MusicCard = ({ item }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const { songPlaying, setSongPlaying } = useContext(SongContext)
+  
+  const togglePlay = () => {
+    setSongPlaying({
+      id: item.id,
+      isPlaying: !isPlaying,
+      file: item.audio
+    })
+    setIsPlaying(prev => !prev);
+  }
+
+  useEffect(() => {
+    if (songPlaying.id === null) {
+      setIsPlaying(false);
+    }
+    else if (!songPlaying.isPlaying) {
+      setIsPlaying(false);
+    }
+    else if (songPlaying.id !== null && songPlaying.id === item.id) {
+      setIsPlaying(true);
+    }
+  }, [songPlaying, item])
 
   return (
     <section className="flex bg-white relative">
+      {songPlaying.isPlaying && songPlaying.id !== item.id && <div className="bg-black opacity-60 h-full w-full absolute z-50"></div>}
       <div className="w-5/12 justify-between flex-col flex pr-3 pb-3 pl-3 relative min-h-full">
         <div className="absolute left-0 top-0 h-full min-w-full z-0">
           <img
@@ -23,7 +47,7 @@ const MusicCard = ({ item }) => {
           }
         </div>
         <button
-          onClick={() => setIsPlaying(prev => !prev)}
+          onClick={() => togglePlay()}
           className="z-10"
         >
           {isPlaying ?

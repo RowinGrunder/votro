@@ -9,6 +9,16 @@ import { lyric07 } from './lyrics/07';
 import { lyric08 } from './lyrics/08';
 import { lyric09 } from './lyrics/09';
 import { lyric10 } from './lyrics/10';
+import audio01 from './songs/the-heart-wants-what-it-wants.mp3';
+import audio02 from './songs/traitor.mp3';
+import audio03 from './songs/close.mp3';
+import audio04 from './songs/salt.mp3';
+import audio05 from './songs/july.mp3';
+import audio06 from './songs/numbers.mp3';
+import audio07 from './songs/is-it-just-me.mp3';
+import audio08 from './songs/think-before-i-talk.mp3';
+import audio09 from './songs/heathens.mp3';
+import audio10 from './songs/go-ahead-and-break-my-heart.mp3';
 
 const generateVotes = () => Math.floor(Math.random() * 100) + 1;
 
@@ -24,6 +34,7 @@ export const songs = [
     genres: ['pop', 'r&b'],
     released: '2014-11-06',
     lyrics: lyric01,
+    audio: audio01,
     links: {
       youtube: 'https://music.youtube.com/watch?v=FhHP3vpTf4A&list=RDAMVMFhHP3vpTf4A',
       spotify: 'https://open.spotify.com/track/2dRvMEW4EwySxRUtEamSfG?autoplay=true',
@@ -43,6 +54,7 @@ export const songs = [
     genres: ['indie pop'],
     released: '2021-05-21',
     lyrics: lyric02,
+    audio: audio02,
     links: {
       youtube: 'https://music.youtube.com/watch?v=4QLvEIXlF6Q&list=RDAMVM4QLvEIXlF6Q',
       spotify: 'https://open.spotify.com/track/5CZ40GBx1sQ9agT82CLQCT?autoplay=true',
@@ -62,6 +74,7 @@ export const songs = [
     genres: ['pop'],
     released: '2016-03-25',
     lyrics: lyric03,
+    audio: audio03,
     links: {
       youtube: 'https://music.youtube.com/watch?v=m-OKTa5e9xQ&list=RDAMVMm-OKTa5e9xQ',
       spotify: 'https://open.spotify.com/track/0BnF8gcEILVfPbe46GQlSB?autoplay=true',
@@ -81,6 +94,7 @@ export const songs = [
     genres: ['dance-pop'],
     released: '2019-12-12',
     lyrics: lyric04,
+    audio: audio04,
     links: {
       youtube: 'https://music.youtube.com/watch?v=Z5NNPqJZy6g&list=RDAMVMZ5NNPqJZy6g',
       spotify: 'https://open.spotify.com/track/5ikMYV9hscSVE9ncSFidRL?autoplay=true',
@@ -100,6 +114,7 @@ export const songs = [
     genres: ['pop'],
     released: '2019-07-31',
     lyrics: lyric05,
+    audio: audio05,
     links: {
       youtube: 'https://music.youtube.com/watch?v=9jUh4X3WwqU&list=RDAMVM9jUh4X3WwqU',
       spotify: 'https://open.spotify.com/track/6J2LdBN97cDWn0MLxYh9HB?autoplay=true',
@@ -119,6 +134,7 @@ export const songs = [
     genres: ['trip-hop', 'electropop'],
     released: '2020-09-25',
     lyrics: lyric06,
+    audio: audio06,
     links: {
       youtube: 'https://music.youtube.com/watch?v=0ZhL5t4SXTk&list=RDAMVM0ZhL5t4SXTk',
       spotify: 'https://open.spotify.com/track/7D0VClhoNONSsdPYWwcTej?autoplay=true',
@@ -138,6 +154,7 @@ export const songs = [
     genres: ['alternative/indie'],
     released: '2020-09-18',
     lyrics: lyric07,
+    audio: audio07,
     links: {
       youtube: 'https://music.youtube.com/watch?v=xe2EuWf9Hrw&list=RDAMVMxe2EuWf9Hrw',
       spotify: 'https://open.spotify.com/track/38MKH1U8zGuzNXbm5tCBrn?autoplay=true',
@@ -157,6 +174,7 @@ export const songs = [
     genres: ['pop'],
     released: '2017-08-27',
     lyrics: lyric08,
+    audio: audio08,
     links: {
       youtube: 'https://music.youtube.com/watch?v=foriEhwfDeY&list=RDAMVMforiEhwfDeY',
       spotify: 'https://open.spotify.com/track/4lszNcJSaz61QT6gpMhFU1?autoplay=true',
@@ -176,6 +194,7 @@ export const songs = [
     genres: ['rap rock', 'dark wave'],
     released: '2016-06-16',
     lyrics: lyric09,
+    audio: audio09,
     links: {
       youtube: 'https://music.youtube.com/watch?v=oLeROuCMwj8&list=RDAMVMoLeROuCMwj8',
       spotify: 'https://open.spotify.com/track/6i0V12jOa3mr6uu4WYhUBr?autoplay=true',
@@ -195,6 +214,7 @@ export const songs = [
     genres: ['country'],
     released: '2016-05-09',
     lyrics: lyric10,
+    audio: audio10,
     links: {
       youtube: 'https://music.youtube.com/watch?v=2lh2AMpVJSw&list=RDAMVM2lh2AMpVJSw',
       spotify: 'https://open.spotify.com/track/6eJBihAzTWRxvvjJWuRQXM?autoplay=true',

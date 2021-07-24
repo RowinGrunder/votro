@@ -3,6 +3,7 @@ import TitleBar from "../TitleBar";
 import MusicCard from "./MusicCard";
 import SortBar from "./SortBar";
 import { SongContext } from "../../contexts/SongContext";
+import Player from "../Player";
 
 const MusicCatalog = () => {
   const { songs, filteredSongs, search, searchClick } = useContext(SongContext);
@@ -16,6 +17,7 @@ const MusicCatalog = () => {
         }
       />
       <div className="py-5 space-y-3">
+        <Player />
         {search
           ? filteredSongs.length
             ? filteredSongs.map(song =>
