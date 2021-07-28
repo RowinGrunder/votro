@@ -1,18 +1,18 @@
 import './App.css';
 import { useContext, useEffect } from 'react';
-import { SongContext } from "./contexts/SongContext"
+import { AppContext } from "./contexts/AppContext"
 import { songs as data } from './assets/data';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MusicCatalog from './components/catalog'
-import MusicInfo from './components/info';
-import PageHeader from './components/header';
+import MusicCatalog from './components/Catalog'
+import MusicInfo from './components/Info';
+import PageHeader from './components/Header';
 import NotFound from './components/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  const { setSongs, setBreakpoint, breakpoint } = useContext(SongContext);
+  const { setSongs, setBreakpoint } = useContext(AppContext);
 
-  // Update breakpoint value
+  // update breakpoint value
   // whenever screen resizes
   const onResize = () => {
     let width = window.innerWidth;
@@ -31,7 +31,7 @@ function App() {
     window.addEventListener('resize', onResize);
   })
   
-  // Save imported data into
+  // save imported data into
   // songs variable upon load 
   useEffect(() => {
     const sortedData = data.sort((a, b) => b.votes - a.votes);
@@ -50,10 +50,8 @@ function App() {
           song.rank = 0;
           break;
       }
-
       return song;
     })
-
     setSongs(sortedData);
   }, [])
   
@@ -61,17 +59,20 @@ function App() {
     <Router>
       <ScrollToTop>
         <div className="App">
-          <main className="bg-violet-dark bg-gray-da min-h-screen">
+          <main className="bg-violet-dark min-h-screen">
             <PageHeader />
             <div className="flex justify-center">
-              <div className="lg:w-1/2 w-full py-5 px-3 lg:px-0">
+              <div className="w-full lg:w-1/2 px-3 lg:px-0 py-5">
                 <Switch>
+                  {/* home */}
                   <Route exact path="/">
                     <MusicCatalog />
                   </Route>
+                  {/* song info page */}
                   <Route exact path="/song/:id">
                     <MusicInfo />
                   </Route>
+                  {/* error page */}
                   <Route component={NotFound} />
                 </Switch>
               </div>

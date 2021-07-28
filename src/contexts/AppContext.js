@@ -1,8 +1,8 @@
 import { useState, createContext } from 'react';
 
-export const SongContext = createContext();
+export const AppContext = createContext();
 
-const SongContextProvider = (props) => {
+const AppContextProvider = (props) => {
   const [songs, setSongs] = useState([]);
   const [song, setSong] = useState({});
   const [active, setActive] = useState('popular');
@@ -12,15 +12,17 @@ const SongContextProvider = (props) => {
   const [songPlaying, setSongPlaying] = useState({id: null, isPlaying: false, file: ''});
   const [breakpoint, setBreakpoint] = useState('');
 
+  // increase vote
   const increaseVote = id => {
     let updatedSongs = songs.map(song => {
       if (song.id === id)
         song.votes++;
-
       return song;
     })
-
+    // sort in descending order
     const sortedData = updatedSongs.sort((a, b) => b.votes - a.votes);
+    // add rank in first
+    // three highest votes
     sortedData.map((song, index) => {
       song.rank = 0;
       switch (index) {
@@ -37,28 +39,35 @@ const SongContextProvider = (props) => {
           song.rank = 0;
           break;
       }
-
       return song;
     })
-
     setSongs(sortedData);
   }
 
+  // sort by highest to lowest votes
   const sortByPopular = () => {
+    // stop audio playing
     setSongPlaying({isPlaying: false});
+    // remove search value
     setSearch('');
     const sortedData = songs.sort((a, b) => b.votes - a.votes);
     setSongs(sortedData);
   }
 
+  // sort by newest to oldest release date
   const sortByLatest = () => {
+    // stop audio playing
     setSongPlaying({isPlaying: false});
+    // remove search value
     setSearch('');
     const sortedData = songs.sort((a, b) => new Date(b.released) - new Date(a.released));
     setSongs(sortedData);
   }
 
+  // search for songs
+  // through keywords
   const searchFor = () => {
+    // stop audio playing
     setSongPlaying({isPlaying: false});
     let filteredData = songs.filter(song => {
       const filter = search.toLowerCase();
@@ -86,10 +95,10 @@ const SongContextProvider = (props) => {
   };
 
   return(
-    <SongContext.Provider value={value}>
+    <AppContext.Provider value={value}>
       {props.children}
-    </SongContext.Provider>
+    </AppContext.Provider>
   )
 }
 
-export default SongContextProvider;
+export default AppContextProvider;

@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { SongContext } from "../../contexts/SongContext";
+import { AppContext } from "../../contexts/AppContext";
 
 const SearchInput = () => {
-  const { search, setSearch, searchFor, setFilteredSongs, setSearchClick, breakpoint } = useContext(SongContext);
+  const { search, setSearch, searchFor, setFilteredSongs, setSearchClick, breakpoint } = useContext(AppContext);
   const history = useHistory();
 
+  // search keyword
   const handleClick = e => {
     e.preventDefault();
     if (history.location.pathname !== '/') {
@@ -15,11 +16,13 @@ const SearchInput = () => {
     searchFor();
   }
 
+  // clear search input
   const handleClear = e => {
     setSearch('');
     setFilteredSongs([]);
   }
 
+  // input change handler
   const handleChange = e => {
     setSearchClick(false);
     setSearch(e.target.value)
@@ -28,6 +31,7 @@ const SearchInput = () => {
   return (
     <form onSubmit={e => handleClick(e)}>
       <div className="flex min-w-full gap-2">
+        {/* input textfield */}
         <div className="relative w-full flex align-center">
           <input
             value={search}
@@ -37,6 +41,8 @@ const SearchInput = () => {
             placeholder="search for song title, artist, album, writer or lyrics"
             maxLength="50"
           />
+          {/* clear input button */}
+          {/* hidden when input is empty */}
           {search &&
             <div className="h-full absolute right-5 flex align-center">
               <button
@@ -50,6 +56,7 @@ const SearchInput = () => {
             </div>
           }
         </div>
+        {/* search button */}
         <button type="submit" className="h-14 bg-black text-white px-5 lg:w-1/6 hover:bg-opacity-60">
           {breakpoint === 'sm' || breakpoint === 'md' ?
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { SongContext } from "../../contexts/SongContext";
+import { AppContext } from "../../contexts/AppContext";
 import albums from "../../assets/albums";
-import MusicDetail from "../detail";
+import MusicDetail from "../Detail";
 import RankRibbon from "../RankRibobn";
 import NotFound from "../NotFound";
 import Player from "../Player";
 
+// individual song page
 const MusicInfo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { songs, song, setSong, songPlaying, setSongPlaying, breakpoint } = useContext(SongContext);
+  const { songs, song, setSong, songPlaying, setSongPlaying, breakpoint } = useContext(AppContext);
   const { id } = useParams();
 
   const togglePlay = () => {
@@ -21,16 +22,16 @@ const MusicInfo = () => {
     setIsPlaying(prev => !prev);
   }
 
+  // play song if
+  // audio is playing
+  // upon redirection
   useEffect(() => {
-    if (songPlaying.id === null) {
+    if (songPlaying.id === null)
       setIsPlaying(false);
-    }
-    else if (!songPlaying.isPlaying) {
+    else if (!songPlaying.isPlaying)
       setIsPlaying(false);
-    }
-    else if (songPlaying.id !== null && songPlaying.id === song.id) {
+    else if (songPlaying.id !== null && songPlaying.id === song.id)
       setIsPlaying(true);
-    }
   }, [songPlaying, song])
 
   useEffect(() => {
@@ -39,23 +40,30 @@ const MusicInfo = () => {
 
   return (
     <section className={`flex ${song ? 'bg-white' : ''}`}>
+      {/* hidden player */}
       <Player />
       {song ?
         <div className="min-w-full justify-center relative lg:flex">
+          {/* background cover */}
           <div className="lg:h-40 z-0 lg:absolute lg:left-0 lg:top-0 w-full lg:min-w-full relative">
+            {/* background image */}
+            {/* full height on smaller screen */}
             <img
               src={albums[song.thumbnail]}
               alt={song.album}
               className="object-cover h-full w-full"
             />
+            {/* background overlay */}
+            {/* hidden on smaller screen */}
             <div className="invisible lg:visible absolute left-0 top-0 bg-black bg-opacity-50 min-w-full h-full"></div>
-
+            {/* rank ribbon */}
             <div className="z-10 right-5 absolute -top-0.5">
               {song.rank > 0 &&
                 <RankRibbon rank={song.rank} />
               }
             </div>
-
+            {/* toggle play button */}
+            {/* displayed on smaller screen */}
             {(breakpoint === 'sm' || breakpoint === 'md') &&
             <div className="z-50 absolute left-5 flex align-center bottom-5">
               <button
@@ -75,13 +83,18 @@ const MusicInfo = () => {
           }
           </div>
 
+          {/* main content */}
           <div className="z-40 w-full lg:pt-28 lg:h-full">
             <div className="flex relative">
+              {/* left side: album image */}
+              {/* hidden on smaller screen */}
               <img
                 src={albums[song.thumbnail]}
                 alt={song.album}
                 className="object-cover h-0 w-0 lg:h-64 lg:w-64 lg:ml-5 invisible lg:visible"
               />
+              {/* toggle play button */}
+              {/* displayed on larger screen */}
               {(breakpoint === 'lg' || breakpoint === 'xl') &&
                 <div className="z-10 absolute rounded-full left-10 bottom-5 flex align-center">
                   <button
@@ -99,17 +112,19 @@ const MusicInfo = () => {
                   </button>
                 </div>
               }
-
+              {/* right side: music detail */}
               <div className="flex-col mt-auto w-full relative bg-white pt-5 lg:pt-2 pr-5">
                 <MusicDetail item={song} preview={false} />
               </div>
             </div>
 
+            {/* music lyrics */}
             <div className="text-black min-w-full text-left px-5 lg:text-center leading-relaxed my-5">
               <span className="whitespace-pre-wrap text-black lowercase">{ song.lyrics }</span>
             </div>
           </div>
         </div>
+        // song id doesn't exist
         : <NotFound />
       }
     </section>

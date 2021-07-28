@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import SongContextProvider from './contexts/SongContext';
+import AppContextProvider from './contexts/AppContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SongContextProvider>
+    <AppContextProvider>
       <App />
-    </SongContextProvider>
+    </AppContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

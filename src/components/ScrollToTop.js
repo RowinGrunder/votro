@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 
+// scroll to top when redirecting to new page
 const ScrollToTop = ({history, children}) => {
   useEffect(() => {
     const unlisten = history.listen(() => {

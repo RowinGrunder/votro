@@ -2,14 +2,15 @@ import { useContext } from "react";
 import TitleBar from "../TitleBar";
 import MusicCard from "./MusicCard";
 import SortBar from "./SortBar";
-import { SongContext } from "../../contexts/SongContext";
+import { AppContext } from "../../contexts/AppContext";
 import Player from "../Player";
 
 const MusicCatalog = () => {
-  const { songs, filteredSongs, search, searchClick } = useContext(SongContext);
+  const { songs, filteredSongs, search, searchClick } = useContext(AppContext);
   
   return (
     <div>
+      {/* title bar */}
       <TitleBar
         title="music board"
         custom={
@@ -17,7 +18,9 @@ const MusicCatalog = () => {
         }
       />
       <div className="py-5 space-y-3">
+        {/* hidden player */}
         <Player />
+        {/* music list */}
         {search
           ? filteredSongs.length
             ? filteredSongs.map(song =>

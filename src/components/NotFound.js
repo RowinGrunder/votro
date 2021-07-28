@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
+// error page
 const NotFound = () => {
   const history = useHistory();
   const [inMusicInfo, setInMusicInfo] = useState(null);

@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef } from "react";
-import { SongContext } from "../contexts/SongContext";
+import { AppContext } from "../contexts/AppContext";
 
+// hidden player
 const Player = () => {
   const audioPlayer = useRef(null);
-  const { songPlaying, setSongPlaying } = useContext(SongContext);
+  const { songPlaying, setSongPlaying } = useContext(AppContext);
 
+  // play/pause song
   const togglePlay = () => {
     if (songPlaying.isPlaying) {
       audioPlayer.current.play();
@@ -14,6 +16,7 @@ const Player = () => {
     }
   }
 
+  // stop song
   const stopSong = () => {
     setSongPlaying({
       id: null,

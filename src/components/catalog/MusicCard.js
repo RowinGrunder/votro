@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import MusicDetail from "../detail";
+import MusicDetail from "../Detail";
 import albums from "../../assets/albums";
 import RankRibbon from "../RankRibobn";
-import { SongContext } from "../../contexts/SongContext";
+import { AppContext } from "../../contexts/AppContext";
 
 const MusicCard = ({ item }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { songPlaying, setSongPlaying } = useContext(SongContext)
+  const { songPlaying, setSongPlaying } = useContext(AppContext)
   
   const togglePlay = () => {
     setSongPlaying({
@@ -31,20 +31,24 @@ const MusicCard = ({ item }) => {
 
   return (
     <section className="grid grid-cols-3 bg-white relative">
+      {/* overlay */}
       {songPlaying.isPlaying && songPlaying.id !== item.id && <div className="bg-black opacity-60 h-full w-full absolute z-50"></div>}
+      {/* left side: album image */}
       <div className="relative min-h-full min-w-full col-span-3 lg:col-span-1">
+        {/* album image */}
         <img
           src={albums[item.thumbnail]}
           alt={item.album}
           className="object-cover h-full w-full"
         />
-
         <div className="absolute h-full w-full pl-5 pb-3 left-0 top-0 flex flex-wrap content-between">
+          {/* rank ribbon */}
           <div className="-m-0.5 w-full">
             {item.rank > 0 &&
               <RankRibbon rank={item.rank} />
             }
           </div>
+          {/* toggle play button */}
           <button
             onClick={() => togglePlay()}
             className="cursor-pointer rounded-full"
@@ -60,7 +64,7 @@ const MusicCard = ({ item }) => {
           </button>
         </div>
       </div>
-
+      {/* right side: music detail */}
       <div className="lg:col-span-2 col-span-3">
         <MusicDetail item={item} />
       </div>

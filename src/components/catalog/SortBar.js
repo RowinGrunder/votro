@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { SongContext } from "../../contexts/SongContext";
+import { AppContext } from "../../contexts/AppContext";
 
 const SortBar = () => {
   const items = ['popular', 'latest'];
-  const { active, setActive, sortByPopular, sortByLatest } = useContext(SongContext);
+  const { active, setActive, sortByPopular, sortByLatest } = useContext(AppContext);
 
+  // sort items
   const handleClick = item => {
     setActive(item);
     switch (item) {
