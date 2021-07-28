@@ -2,7 +2,7 @@ import { useState, createContext } from 'react';
 
 export const SongContext = createContext();
 
-function SongContextProvider(props) {
+const SongContextProvider = (props) => {
   const [songs, setSongs] = useState([]);
   const [song, setSong] = useState({});
   const [active, setActive] = useState('popular');
@@ -10,6 +10,7 @@ function SongContextProvider(props) {
   const [searchClick, setSearchClick] = useState(false);
   const [filteredSongs, setFilteredSongs] = useState([]);
   const [songPlaying, setSongPlaying] = useState({id: null, isPlaying: false, file: ''});
+  const [breakpoint, setBreakpoint] = useState('');
 
   const increaseVote = id => {
     let updatedSongs = songs.map(song => {
@@ -78,7 +79,11 @@ function SongContextProvider(props) {
   const searchValue = { search, setSearch, searchFor };
   const searchResult = { filteredSongs, setFilteredSongs, searchClick, setSearchClick };
   const audioValue = { songPlaying, setSongPlaying };
-  const value = { ...songValue, ...sortValue, ...searchValue, ...searchResult, ...audioValue };
+  const screenValue = { breakpoint, setBreakpoint };
+  const value = {
+    ...songValue, ...sortValue, ...searchValue,
+    ...searchResult, ...audioValue, ...screenValue
+  };
 
   return(
     <SongContext.Provider value={value}>

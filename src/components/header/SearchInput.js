@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { SongContext } from "../../contexts/SongContext";
 
 const SearchInput = () => {
-  const { search, setSearch, searchFor, setFilteredSongs, setSearchClick } = useContext(SongContext);
+  const { search, setSearch, searchFor, setFilteredSongs, setSearchClick, breakpoint } = useContext(SongContext);
   const history = useHistory();
 
   const handleClick = e => {
@@ -33,7 +33,7 @@ const SearchInput = () => {
             value={search}
             onChange={e => handleChange(e)}
             type="text"
-            className="h-14 bg-gray-800 text-white w-full px-5 outline-none focus:bg-gray-700 "
+            className="h-14 bg-violet-darker text-white w-full px-5 focus:bg-gray-700 "
             placeholder="search for song title, artist, album, writer or lyrics"
             maxLength="50"
           />
@@ -50,8 +50,13 @@ const SearchInput = () => {
             </div>
           }
         </div>
-        <button type="submit" className="h-14 bg-black text-white px-5 w-1/6 hover:bg-opacity-60">
-          search
+        <button type="submit" className="h-14 bg-black text-white px-5 lg:w-1/6 hover:bg-opacity-60">
+          {breakpoint === 'sm' || breakpoint === 'md' ?
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+            </svg>
+            : 'search'
+          }
         </button>
       </div>
     </form>

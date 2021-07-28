@@ -23,7 +23,7 @@ const PageHeader = () => {
   
   return (
     <div className="flex justify-center py-5">
-      <div className="w-1/2">
+      <div className="lg:w-1/2 w-full px-3 lg:px-0">
         {isHome
           ? <SearchInput />
           : <div className="flex justify-between mt-3">

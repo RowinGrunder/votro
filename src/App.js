@@ -10,7 +10,26 @@ import NotFound from './components/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  const { setSongs } = useContext(SongContext);
+  const { setSongs, setBreakpoint, breakpoint } = useContext(SongContext);
+
+  // Update breakpoint value
+  // whenever screen resizes
+  const onResize = () => {
+    let width = window.innerWidth;
+    if (width <= 640)
+      setBreakpoint('sm');
+    else if (width > 640 && width <= 768)
+      setBreakpoint('md');
+    else if (width > 768 && width <= 1024)
+      setBreakpoint('lg');
+    else if (width > 1024)
+      setBreakpoint('xl');
+  }
+
+  useEffect(() => {
+    onResize();
+    window.addEventListener('resize', onResize);
+  })
   
   // Save imported data into
   // songs variable upon load 
@@ -42,10 +61,10 @@ function App() {
     <Router>
       <ScrollToTop>
         <div className="App">
-          <main className="bg-gray-900 min-h-screen">
+          <main className="bg-violet-dark bg-gray-da min-h-screen">
             <PageHeader />
             <div className="flex justify-center">
-              <div className="w-1/2 py-5">
+              <div className="lg:w-1/2 w-full py-5 px-3 lg:px-0">
                 <Switch>
                   <Route exact path="/">
                     <MusicCatalog />

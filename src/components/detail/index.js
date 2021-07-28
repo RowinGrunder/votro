@@ -10,7 +10,7 @@ const MusicDetail = ({ item, preview=true }) => {
   const { increaseVote } = useContext(SongContext);
 
   return (
-    <div className={`${ preview ? 'm-5 w-2/3' : 'ml-5 w-11/12' } lowercase space-y-1`}>
+    <div className={`${ preview ? 'm-5' : 'ml-5 lg:w-11/12' } lowercase space-y-1`}>
       <div className={`${ preview ? 'truncate' : '' } text-3xl text-black font-bold tracking-tighter w-5/6`}>{ item.title }</div>
       <div className="flex flex-wrap items-center">
         <span className="text-black inline-block">{ item.album }</span>
@@ -37,7 +37,7 @@ const MusicDetail = ({ item, preview=true }) => {
           { item.lyrics }
           <Link
             to={`/song/${item.id}`}
-            className="absolute right-0 bottom-0 bg-white pl-3 underline text-blue-500"
+            className="absolute right-0 bottom-0 bg-white pl-3 underline text-blue-500 outline-none"
           >
             more
           </Link>

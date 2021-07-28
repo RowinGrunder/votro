@@ -21,21 +21,21 @@
 
 .ribbon-1 {
   width: 0;
-  border-right: 1rem solid #FFCD02;
-  border-left: 1rem solid #FFCD02;
+  border-right: 1rem solid #ffc918;
+  border-left: 1rem solid #ffc918;
   border-bottom: 10px solid transparent;
 }
 
 .ribbon-2 {
   width: 0;
-  border-right: 1rem solid #A6A9AB;
-  border-left: 1rem solid #A6A9AB;
+  border-right: 1rem solid #00aeef;
+  border-left: 1rem solid #00aeef;
   border-bottom: 10px solid transparent;
 }
 
 .ribbon-3 {
   width: 0;
-  border-right: 1rem solid #A3684D;
-  border-left: 1rem solid #A3684D;
+  border-right: 1rem solid #00a651;
+  border-left: 1rem solid #00a651;
   border-bottom: 10px solid transparent;
 }
